@@ -1,7 +1,7 @@
-<h1>{{.movies}}</h1>
+<h1>{{.Genre}}</h1>
 
-<!-- <p>
-    {{range .movies}}
-        {{ .movies }}
-    {{end}}
-</p> -->
+<p>{{index .Title 1}}</p>
+
+{{range .p}}
+    <p>{{.Title}}</p>
+{{end}}

@@ -9,9 +9,11 @@ import(
 
 type NextPage struct {
     Genre string
-    Title string
+    Title[] string
     Path string
 }
+
+var title[]string
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, r.URL.Path[1:])
@@ -22,13 +24,13 @@ func nextHandler(w http.ResponseWriter, r *http.Request) {
     
     movies := getMovies.GetMovies(r.FormValue("genre"))
 
-    // var title[]string
-    // for i := 0; i < len(movies); i++ {
-    //     title := NextPage{Title: movies[i].MTitle}
-    // }
+    for i := 0; i < len(movies); i++ {
+        title := movies[i].MTitle
+        fmt.Println(title)
+    }
 
-    p := movies
-    //p := NextPage{Genre: r.FormValue("genre"), Title: title[0]}
+    //p := movies
+    p := NextPage{Genre: r.FormValue("genre"), Title: title}
     fmt.Println(len(movies))
     fmt.Println(movies)
     t, _ := template.ParseFiles("mvtitles.html")
