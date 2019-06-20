@@ -6,11 +6,11 @@
     <h1>Welcome To Seance</h1>
     <p>Please Select A Genre Of Movie You Would Like To Watch</p>
     <form method="post" action="/next">
-        <input type="radio" name="genre" value="Horror"><br/>
-        <input type="radio" name="genre" value="Martial Arts Fantasy">
-        <input type="radio" name="genre" value="Action">
-        <input type="radio" name="genre" value="Period Piece">
-        <input type="radio" name="genre" value="War">
+        <label for="horror"><input type="radio" name="genre" id="horror" value="Horror">Horror</label><br/>
+        <label for="maf"><input type="radio" name="genre" id="maf" value="Martial Arts Fantasy">Martial Arts Fantasy</label><br/>
+        <label for="act"><input type="radio" name="genre" id="act" value="Action">Action</label><br/>
+        <label for="pepi"><input type="radio" name="genre" id="pepi" value="Period Piece">Period Piece</label><br/>
+        <label for="wa"><input type="radio" name="genre" id="wa" value="War">War</label><br/>
         <input type="submit" value="Next">
     </form>
 </body>

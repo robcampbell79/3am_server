@@ -1,7 +1,9 @@
 <h1>{{.Genre}}</h1>
 
-<p>{{index .Title 1}}</p>
+<p>{{.NextPage.Title}}</p>
 
-{{range .p}}
-    <p>{{.Title}}</p>
+<p>{{index .Title 0 0}}</p>
+
+{{range .NextPage}}
+    <p>{{range $i :- .Title}}{{$i}}</p>{{end}}
 {{end}}
