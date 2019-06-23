@@ -1,9 +1,24 @@
-<h1>{{.Genre}}</h1>
+<html>
+    <h1>{{.Genre}}</h1>
 
-<p>{{.NextPage.Title}}</p>
+    <form>
+        <div class="movies">
+        {{range $i, $e := .Title}}
+            {{if lt $i 2}}
+                <input type="radio" name="movie" class="movie" value="{{$i}}">{{.}}
+            {{end}}
+            {{end}}
+        </div>
 
-<p>{{index .Title 0 0}}</p>
+        <br><br>
 
-{{range .NextPage}}
-    <p>{{range $i :- .Title}}{{$i}}</p>{{end}}
-{{end}}
+        {{range $i, $e := .Path}}
+            {{if lt $i 2}}
+            <p>{{$i}}</p>
+                <p>{{.}}</p>
+            {{end}}
+        {{end}}
+    </form>
+</html>
+<script src="mvtitles.js"></script>
+

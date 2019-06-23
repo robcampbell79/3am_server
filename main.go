@@ -10,10 +10,11 @@ import(
 type NextPage struct {
     Genre string
     Title[] string
-    Path string
+    Path[] string
 }
 
 var title[]string
+var path[]string
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, r.URL.Path[1:])
@@ -25,16 +26,27 @@ func nextHandler(w http.ResponseWriter, r *http.Request) {
     movies := getMovies.GetMovies(r.FormValue("genre"))
 
     for i := 0; i < len(movies); i++ {
-        title := movies[i].MTitle
-        fmt.Println(title)
+        title = append(title, movies[i].MTitle)
+        //fmt.Println(title)
+    }
+
+    for i := 0; i < len(movies); i++ {
+        path = append(path, movies[i].MPath)
+        //fmt.Println(title)
     }
 
     //p := movies
-    p := NextPage{Genre: r.FormValue("genre"), Title: title}
-    fmt.Println(len(movies))
-    fmt.Println(movies)
+    p := NextPage{Genre: r.FormValue("genre")}
+    ti := NextPage{Title: title}
+    pth := NextPage{Path: path}
+    //fmt.Println(len(movies))
+    for i := 0; i < len(movies); i++ {
+        fmt.Println(title)
+    }
     t, _ := template.ParseFiles("mvtitles.html")
     t.Execute(w, p)
+    t.Execute(w, ti)
+    t.Execute(w, pth)
 }
 
 func main() {
